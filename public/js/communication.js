@@ -6,6 +6,12 @@
 
     var socket = io();
 
+    $(messsageInput).keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(messageSubmit).click();
+      }
+    });
+
     $(messageSubmit).click(function() {
 
       var msg = $(messsageInput).val();
