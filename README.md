@@ -30,4 +30,4 @@ And in server console, this message will be displayed:
 
 >New connection
 
-Then in browser, we can type the chat message and send to see the effect.
+Then in browser, we can type the chat message and click "send" button to see the effect.
