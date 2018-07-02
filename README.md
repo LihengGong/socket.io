@@ -5,7 +5,7 @@ This is sample code to show how to integrate socket.io with rabbitMQ.
 
 ##How to use
 
-* Install node.js
+* Install `node.js`
 * In shell command:
 
   `npm install --save socket.io express amqplib moment`
