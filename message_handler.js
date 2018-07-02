@@ -3,26 +3,34 @@ var rabbitMQHandler = require('./rabbitMQ_messaging');
 module.exports = messageHandler;
 
 function messageHandler(io) {
-  console.log('io.on');
-  io.on('connection', websocketConnect);
+  rabbitMQHandler('amqp://localhost', function(err, options) {
 
-  function websocketConnect(socket) {
-    console.log('New connection');
-
-    socket.on('disconnect', socketDisconnect);
-    socket.on('message', socketMessage);
-
-    function socketDisconnect(e) {
-      console.log('Disconnect ', e);
+    if (err) {
+      throw err;
     }
+    options.onMessageReceived = onMessageReceived;
+    console.log('io.on');
+    io.on('connection', websocketConnect);
 
-    function socketMessage(text) {
-      var message = {text: text, data: new Date()};
-      io.emit('message', message);
-    }
-  }
+    function websocketConnect(socket) {
+      console.log('New connection');
 
-  function onMessageReceived(message) {
-    io.emit('message', message)
-  }
+      socket.on('disconnect', socketDisconnect);
+      socket.on('message', socketMessage);
+
+      function socketDisconnect(e) {
+        console.log('Disconnect ', e);
+      }
+
+      function socketMessage(text) {
+        var message = {text: text, data: new Date()};
+        //io.emit('message', message);
+        options.emitMessage(message);
+      }
+   }
+
+   function onMessageReceived(message) {
+     io.emit('message', message)
+   }
+});
 }

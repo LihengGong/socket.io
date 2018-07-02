@@ -8,6 +8,8 @@ function rabbitMQMessages(address, callback) {
       return callback(err);
     }
 
+    console.log("in amqpConnectCallback");
+
     conn.createChannel(function(err, ch) {
       if (err) {
         return callback(err);
@@ -35,6 +37,7 @@ function rabbitMQMessages(address, callback) {
 
         function emitMessage(message) {
           var str = JSON.stringify(message);
+          console.log("In emitMessage");
           ch.publish('messages', '', Buffer.alloc(str.length, str));
         }
 
