@@ -3,7 +3,7 @@ integrate socket.io with rabbitMQ
 
 This is sample code to show how to integrate socket.io with rabbitMQ.
 
-##How to use
+## How to use
 
 * Install `node.js`
 * In shell command:
