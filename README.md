@@ -22,10 +22,12 @@ and the output is:
 >
 > Server running on port 3000
 
-To run client code, open a brower and type:
+To run client code, open a browser and type:
 
 `http://localhost:3000/`
 
 And in server console, this message will be displayed:
 
 >New connection
+
+Then in browser, we can type the chat message and send to see the effect.
