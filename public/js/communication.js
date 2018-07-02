@@ -27,12 +27,6 @@
       $(messageList).append(getMessageHTML(msg));
     }
 
-//function getMessageHTML(msg){
-    //  return '<li class="chat-message"><strong>' + msg.text +
-    //'</strong>&nbsp;<i class=\"msg-date\">'
-    //+ moment(new Date(msg.date)).format('MMMM Do YYYY, h:mm:ss a') + '</i>' +  '</li>'
-    //}
-
     function getMessageHTML(msg) {
       console.log(msg.data);
       return '<li class="chat-message"><strong>' + msg.text
